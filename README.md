@@ -1,6 +1,6 @@
 # SecureSubmit WordPress Plugin
 
-SecureSubmit allows merchants using Heartland Payment Systems to take PCI-Friendly donations on their WordPress site.
+SecureSubmit allows merchants using Global Payments to take PCI-Friendly donations on their WordPress site.
 
 ## Upgrade from 1.2.x to 1.3.x
 
@@ -19,7 +19,7 @@ Features of SecureSubmit:
 1. Simple to install and configure
 1. "Buy Now" options supported
 1. "Donate Now" is default, tagless option
-1. Fully supported by Heartland Payment Systems
+1. Fully supported by Global Payments
 1. Available as a form or as a modal window
 1. Button builder added to default WYSIWYG WP Editor
 
@@ -32,7 +32,7 @@ Features of SecureSubmit:
 ## Frequently Asked Questions
 
 How do I get started?
-Get your Certification (Dev) API keys by creating an account by Clicking Here here: https://developer.heartlandpaymentsystems.com/SecureSubmit
+Get your Certification (Dev) API keys by creating an account by Clicking Here here: https://developer.globalpayments.com/heartland/payments/overview
 
 ## Screenshots
 
@@ -42,6 +42,9 @@ Get your Certification (Dev) API keys by creating an account by Clicking Here he
 4. This screenshot shows a non-modal view.
 
 ## Changelog
+#### 1.5.19
+* Global payment rebranding
+
 #### 1.5.18
 * Vulnerability fixes
 
@@ -111,7 +114,7 @@ Get your Certification (Dev) API keys by creating an account by Clicking Here he
 
 #### 1.5.2
 
-* Updated Heartland PHP SDK
+* Updated Global Payments PHP SDK
 * Test against Wordpress 4.7
 
 #### 1.5.1
@@ -163,7 +166,7 @@ Get your Certification (Dev) API keys by creating an account by Clicking Here he
 
 #### 1.4.0
 
-* Update Heartland PHP SDK
+* Update Global Payments PHP SDK
 * Test against Wordpress 4.3
 
 #### 1.3.10

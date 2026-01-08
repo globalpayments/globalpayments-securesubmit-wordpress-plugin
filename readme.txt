@@ -1,13 +1,13 @@
 === WP SecureSubmit ===
 Contributors: markhagan
-Tags: donation, payment, buy now, securesubmit, heartland
+Tags: donation, payment, buy now, securesubmit, GlobalPayments
 Requires at least: 3.0.1
 Tested up to: 6.7.1
 Stable tag: trunk
 License: GPLv2
-License URI: https://github.com/hps/heartland-wordpress-plugin/blob/master/LICENSE.md
+License URI: https://github.com/globalpayments/globalpayments-securesubmit-wordpress-plugin/blob/master/LICENSE.md
 
-SecureSubmit allows merchants using Heartland Payment Systems to take PCI-Friendly donations on their WordPress site.
+SecureSubmit allows merchants using Global Payments to take PCI-Friendly donations on their WordPress site.
 
 == Description ==
 
@@ -20,7 +20,7 @@ Features of SecureSubmit:
 *   Simple to isntall and configure
 *   "Buy Now" options supported
 *   "Donate Now" is default, tagless option
-*   Fully supported by Heartland Payment Systems
+*   Fully supported by Global Payments
 *   Available as a form or as a modal window
 
 
@@ -34,7 +34,7 @@ Features of SecureSubmit:
 
 = How do I get started? =
 
-Get your Certification (Dev) API keys by creating an account by [Clicking Here](here: https://developer.heartlandpaymentsystems.com/SecureSubmit/ "Heartland SecureSubmit")
+Get your Certification (Dev) API keys by creating an account by [Clicking Here](here: https://developer.globalpayments.com/heartland/payments/overview/ "Global Payments SecureSubmit")
 
 = Does this support sites using the Gutenberg editor?
 
@@ -49,6 +49,9 @@ the button builder. To use the button builder, the classic editor is currently r
 4. This screenshot shows a non-modal view.
 
 == Changelog ==
+= 1.5.19 =
+* Global payment rebranding
+
 = 1.5.18 =
 * Vulnerability fixes
 
@@ -104,7 +107,7 @@ the button builder. To use the button builder, the classic editor is currently r
 * Test against PHP 7.0.10
 
 = 1.5.2 =
-* Updated Heartland PHP SDK
+* Updated Global Payments PHP SDK
 * Test against Wordpress 4.7
 
 = 1.5.1 =
@@ -144,7 +147,7 @@ the button builder. To use the button builder, the classic editor is currently r
 * Update certification url to support PCI DSS 3.1
 
 = 1.4.0 =
-* Update Heartland PHP SDK
+* Update Global Payments PHP SDK
 * Test against Wordpress 4.3
 
 = 1.3.10 =

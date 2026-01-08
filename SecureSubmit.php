@@ -1,11 +1,11 @@
 <?php
 /*
 Plugin Name: WP SecureSubmit
-Plugin URI: https://developer.heartlandpaymentsystems.com/SecureSubmit
-Description: Heartland Payment Systems SecureSubmit Plugin
+Plugin URI: https://developer.globalpayments.com/heartland/payments/overview
+Description: Global Payments SecureSubmit Plugin
 Author: SecureSubmit
-Version: 1.5.18
-Author URI: https://developer.heartlandpaymentsystems.com/SecureSubmit
+Version: 1.5.19
+Author URI: https://developer.globalpayments.com/heartland/payments/overview
 */
 global $jal_db_version;
 global $wpdb;
@@ -208,7 +208,7 @@ class SecureSubmit {
                 <!-- Start API Credentials Panel -->
                 <div class="ss-panel ss-api-credentials">
                     <h3>API Credentials</h3>
-                    <p><a href="https://developer.heartlandpaymentsystems.com/Account/KeysAndCredentials" target="_blank">Click here</a> to get your SecureSubmit API keys!</p>
+                    <p><a href="https://developer.globalpayments.com/heartland/payments/overview" target="_blank">Click here</a> to get your SecureSubmit API keys!</p>
                     <label for="ssd_public_key">Public Key:</label>
                     <input type="text" id="ssd_public_key" class="regular-text" value="<?php if (isset($this->options['public_key'])) echo esc_attr($this->options['public_key']); ?>" />
                     <label for="ssd_secret_key">Secret Key:</label>
@@ -308,7 +308,7 @@ class SecureSubmit {
                         <tbody>
                             <tr>
                                 <td>%transactionid%</td>
-                                <td>Heartland's Gateway Transaction ID</td>
+                                <td>Global Payments Gateway Transaction ID</td>
                             </tr>
                             <tr>
                                 <td>%firstname%</td>
@@ -2012,7 +2012,7 @@ class SecureSubmit {
         //product info
         if (!empty($productname)) {
             $email_productinfo = '<h3>Product Information</h3>';
-            $email_productinfo .= 'Product Id: ' . $productid . '<br/>';
+            $email_productinfo .= 'Product Id: ' . sanitize_text_field($productid) . '<br/>';
             $email_productinfo .= 'Product Name: ' . $productname . '<br/>';
         }
 
@@ -2062,13 +2062,13 @@ class SecureSubmit {
 
         // billing info
         $email_billinginfo = '<h3>Billing Information</h3>';
-        $email_billinginfo .= 'Name: ' . $billing_firstname . ' ' . $billing_lastname . '<br/>';
-        $email_billinginfo .= 'Address: ' . $billing_address . '<br/>';
-        $email_billinginfo .= 'City: ' . $billing_city . '<br/>';
+        $email_billinginfo .= 'Name: ' . sanitize_text_field($billing_firstname) . ' ' . sanitize_text_field($billing_lastname) . '<br/>';
+        $email_billinginfo .= 'Address: ' . sanitize_text_field($billing_address) . '<br/>';
+        $email_billinginfo .= 'City: ' . sanitize_text_field($billing_city) . '<br/>';
         if ($requireState)
-            $email_billinginfo .= 'State: ' . $billing_state . '<br/>';
-        $email_billinginfo .= 'Zip: ' . $billing_zip . '<br/>';
-        $email_billinginfo .= 'Email: ' . $billing_email . '<br/>';
+            $email_billinginfo .= 'State: ' . sanitize_text_field($billing_state) . '<br/>';
+        $email_billinginfo .= 'Zip: ' . sanitize_text_field($billing_zip) . '<br/>';
+        $email_billinginfo .= 'Email: ' . sanitize_text_field($billing_email) . '<br/>';
 
         if (isset($_POST['same_as_billing']) || $shipping_address === '') {
             $shipping_firstname = $billing_firstname;
@@ -2084,14 +2084,14 @@ class SecureSubmit {
         $email_shippinginfo = '<h3>Shipping Information</h3>';
         $email_shippinginfo .= 'Name: '
             . (isset($shipping_name)
-                ? $shipping_name
-                : $shipping_firstname . ' ' . $shipping_lastname)
+                ? sanitize_text_field($shipping_name)
+                : sanitize_text_field($shipping_firstname) . ' ' . sanitize_text_field($shipping_lastname))
                 . '<br/>';
-        $email_shippinginfo .= 'Address: ' . $shipping_address . '<br/>';
-        $email_shippinginfo .= 'City: ' . $shipping_city . '<br/>';
+        $email_shippinginfo .= 'Address: ' . sanitize_text_field($shipping_address) . '<br/>';
+        $email_shippinginfo .= 'City: ' . sanitize_text_field($shipping_city) . '<br/>';
         if ($requireState)
-            $email_shippinginfo .= 'State: ' . $shipping_state . '<br/>';
-        $email_shippinginfo .= 'Zip: ' . $shipping_zip . '<br/>';
+            $email_shippinginfo .= 'State: ' . sanitize_text_field($shipping_state) . '<br/>';
+        $email_shippinginfo .= 'Zip: ' . sanitize_text_field($shipping_zip) . '<br/>';
 
 
         $email_additionalinfo = '<h3>Additional Information</h3>';
@@ -2112,7 +2112,7 @@ class SecureSubmit {
                     $IP = $_SERVER["REMOTE_ADDR"];
                 }
 
-                $HPS_VarName = "HeartlandHPS_FailCount" . md5($IP);
+                $HPS_VarName = "HeartlandHPS_FailCount" . hash('sha256', $IP);
                 $HeartlandHPS_FailCount = (int)get_transient( $HPS_VarName );
                 $issuerResponse = get_transient( $HPS_VarName . 'IssuerResponse' );
 
@@ -2170,10 +2170,10 @@ class SecureSubmit {
             $body = str_replace('%firstname%', $billing_firstname, $body);
             $body = str_replace('%lastname%', $billing_lastname, $body);
             $body = str_replace('%amount%', $amount, $body);
-            $body = str_replace('%productinfo%', $email_productinfo, $body);
-            $body = str_replace('%billingaddress%', $email_billinginfo, $body);
-            $body = str_replace('%shippingaddress%', $email_shippinginfo, $body);
-            $body = str_replace('%additionalinformation%', $email_additionalinfo, $body);
+            $body = str_replace('%productinfo%', sanitize_text_field($email_productinfo), $body);
+            $body = str_replace('%billingaddress%', sanitize_text_field($email_billinginfo), $body);
+            $body = str_replace('%shippingaddress%', sanitize_text_field($email_shippinginfo), $body);
+            $body = str_replace('%additionalinformation%', sanitize_text_field($email_additionalinfo), $body);
 
             $email_subject = $this->options['email_subject'];
 
@@ -2181,8 +2181,8 @@ class SecureSubmit {
             $email_subject = str_replace('%firstname%', $billing_firstname, $email_subject);
             $email_subject = str_replace('%lastname%', $billing_lastname, $email_subject);
             $email_subject = str_replace('%amount%', $amount, $email_subject);
-            $email_subject = str_replace('%productinfo%', $email_productinfo, $email_subject);
-            $email_subject = str_replace('%billingaddress%', $email_billinginfo, $email_subject);
+            $email_subject = str_replace('%productinfo%', sanitize_text_field($email_productinfo), $email_subject);
+            $email_subject = str_replace('%billingaddress%', sanitize_text_field($email_billinginfo), $email_subject);
             $email_subject = str_replace('%shippingaddress%', $email_shippinginfo, $email_subject);
             $email_subject = str_replace('%additionalinformation%', $email_additionalinfo, $email_subject);
 
