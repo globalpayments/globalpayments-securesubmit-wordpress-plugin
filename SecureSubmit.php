@@ -4,7 +4,7 @@ Plugin Name: WP SecureSubmit
 Plugin URI: https://developer.globalpayments.com/heartland/payments/overview
 Description: Global Payments SecureSubmit Plugin
 Author: SecureSubmit
-Version: 1.5.19
+Version: 1.5.20
 Author URI: https://developer.globalpayments.com/heartland/payments/overview
 */
 global $jal_db_version;

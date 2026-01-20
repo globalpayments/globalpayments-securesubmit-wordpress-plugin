@@ -42,6 +42,9 @@ Get your Certification (Dev) API keys by creating an account by Clicking Here he
 4. This screenshot shows a non-modal view.
 
 ## Changelog
+#### 1.5.20
+* Additional rebranding updates
+
 #### 1.5.19
 * Global payment rebranding
 
